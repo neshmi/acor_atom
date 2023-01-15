@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - "./app:/usr/share/nginx/html"
+  db:
+    image: "mysql:latest"
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./db:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+  memcached:
+    image: "memcached:latest"
+    ports:
+      - "11211:11211"
+  gearman:
+    image: "gearman:latest"
+    ports:
+      - "4730:4730"
+  elastic:
+    image: "elasticsearch:latest"
+    ports:
+      - "9200:9200"
